@@ -29,7 +29,7 @@ You can have many virtual domains. Each domain have a tree with
 `dn: o=<domain>,c=en`.
 `imap.example.com` is the Cyrus-IMAPD server where the mailbox `name@example.com` stays.
 
-The attribute `o` is not mandatory. Is defined in the `$attr_ldap_localdom` configuration parameter.
+The attribute `o` is not mandatory. It is defined in the `$attr_ldap_localdom` configuration parameter.
 
 ## Install
 Clone the repository in a web server. Move the `include` folder under the Document Root.
