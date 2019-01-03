@@ -33,13 +33,14 @@ rm -rf %{buildroot}/
 
 %install
 
-rm -rf rpm/*
+rm -rf rpm/* include
 
 # Web HTTPD conf
 
 install -D -m0444 %{bigname}.conf-default %{buildroot}%{_sysconfdir}/httpd/conf.d/%{bigname}.conf
 sed -i 's|\/var\/www\/html\/include|%{_datadir}/include|' %{buildroot}%{_sysconfdir}/httpd/conf.d/%{bigname}.conf
 sed -i 's|\/var\/www\/html\/%{bigname}|%{_datadir}/%{bigname}|' %{buildroot}%{_sysconfdir}/httpd/conf.d/%{bigname}.conf
+rm %{bigname}.conf-default
 
 # Cyrus Restore application files
 mkdir -p %{buildroot}%{_datadir}/%{bigname}
