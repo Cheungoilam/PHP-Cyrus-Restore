@@ -1,0 +1,23 @@
+<?php
+	/* LDAP */
+                $ldapserver = 'ldap.example.com';
+                $ldapport = 389;
+                $dnlog = 'cn=admin,cn=en';
+                $password = 'ldappassword';
+		$base = 'cn=en';
+		$attr_ldap_localdom = 'o';
+	/* Cyrus IMAP */
+		$imapadmin = 'admin';
+		$imappwd   = 'password';
+		$cyrpath = '/usr/lib/cyrus-imapd';
+		$ignoreFolders=NULL;
+		$trashFolder='Trash';
+		$maxday=30;
+		
+	/* Syslog */
+		$fac = LOG_MAIL;
+		$process = 'cyr_restore';
+	/* System */
+		setlocale(LC_ALL,'en_US.utf8');
+		$welcomeFile='en.html';
+?>
