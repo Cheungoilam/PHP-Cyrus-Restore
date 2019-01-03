@@ -60,7 +60,6 @@ esac
 
 
 %files -f FILELIST
-%{_datadir}/include
 %license %{_datadir}/%{bigname}/LICENSE
 %doc %{_datadir}/%{bigname}/README.md
 %config(noreplace) %{_datadir}/%{bigname}/config.php
