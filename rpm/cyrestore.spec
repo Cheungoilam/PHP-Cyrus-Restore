@@ -2,14 +2,14 @@
 %global bigname PHP-Cyrus-Restore
 
 Summary: A management tool for delayed deleted folders and delayed expunged mails.
-Name: Cyrus Restore
+Name: CyrusRestore
 Version: 0.1.0
 Release: 1%{?dist}
 Group: Applications/Communications
 License: Apache-2.0
 URL: https://falon.github.io/%{bigname}/
 Source0: https://github.com/falon/%{bigname}/archive/master.zip
-BuildArch:	noarch
+BuildArch:      noarch
 
 # Required for all versions
 Requires: httpd >= 2.4.6
@@ -17,9 +17,10 @@ Requires: mod_ssl >= 2.4.6
 Requires: php >= 7.1
 Requires: php-imap >= 7.1
 Requires: php-ldap >= 7.1
+Requires: FalonCommon >= 0.1.0
 
 %description
-%{bigname} 
+%{bigname}
 A frontend to manage the delayed deleted folders
 and the delayed expunged mails.
 
@@ -33,16 +34,6 @@ rm -rf %{buildroot}/
 %install
 
 rm -rf rpm/*
-
-# Include dir
-mkdir -p %{buildroot}%{_datadir}/include
-cd include
-install -m0444 ajaxsbmt.js %{buildroot}%{_datadir}/include
-install -m0444 checkAll.js %{buildroot}%{_datadir}/include
-install -m0444 pleasewait.gif %{buildroot}%{_datadir}/include
-install -m0444 style.css  %{buildroot}%{_datadir}/include
-cd ..
-rm -rf include
 
 # Web HTTPD conf
 
@@ -58,12 +49,12 @@ mv %{buildroot}%{_datadir}/%{bigname}/config.php_default %{buildroot}%{_datadir}
 rm -rf %{buildroot}%{_datadir}/%{bigname}/_config.yml %{buildroot}%{_datadir}/.gitignore %{buildroot}%{_datadir}/rpm
 
 ##File list
-find %{buildroot}%{_datadir}/%{bigname} -mindepth 1 -type f | grep -v config\.php$ | grep -v \.git | grep -v '\_default$' | sed -e "s@$RPM_BUILD_ROOT@@" > FILELIST
+find %{buildroot}%{_datadir}/%{bigname} -mindepth 1 -type f | grep -v LICENSE$ | grep -v \.md$ | grep -v config\.php$ | grep -v \.git | grep -v '\_default$' | sed -e "s@$RPM_BUILD_ROOT@@" > FILELIST
 
 %post
 case "$1" in
   1)
-        echo -en "\n\n\e[33mRemember to setup the ssh connection with each IMAP server.\e[39m\n\n"
+        echo -en "\n\n\e[33mRemember to setup the ssh connection with each IMAP server.\nPlease, modify the file\n\t%{_sysconfdir}/httpd/conf.d/%{bigname}.conf\nand the file\n\t%{_datadir}/%{bigname}/config.php\nat your need. Enjoy!\e[39m\n\n"
   ;;
 esac
 
