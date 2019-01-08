@@ -71,8 +71,11 @@ foreach ($_POST['folder'] as $key => $item) {
 					if (preg_match('/(?P<name>[^\:]+)\:\s(?P<value>[^$]+)/',$row, $match))
 						print "<tr><td>${match['name']}</td><td>${match['value']}</td></tr>";
 				}
-				if (preg_match('/^Subj\:/',$row))
-					print '</table>'; 
+				if (preg_match('/^Subj\:/',$row)) {
+					print '</table>';
+					# ensure exit to escape some bug on unexpunge
+					continue;
+				}
 			}
 		}
 		else {
