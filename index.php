@@ -34,8 +34,8 @@ print <<<END
     <td class="form"><input name="list" value="1" checked="" type="radio">List restorable folders</td>
     <td class="form"><input name="list" value="0" type="radio">Restore messages</td>
 </tr>
-<tr style= "margin-top: 3"><td colspan="3" style="text-align:center"><input type="submit" value="Engage" 
-   name="Engage" onClick="xmlhttpPost('list.htm', 'Richiestadati', 'Recover', ''); return true;"> <input type="reset" value="Reset" name="Reset" onclick="xmlhttpPost('list.htm', 'Richiestadati', 'Recover', '<img src=\'/include/pleasewait.gif\'>'); xmlhttpPost('list.htm', 'Richiestadati', 'Risultato', '<img src=\'/include/pleasewait.gif\'>'); return true;"></td></tr>
+<tr style= "margin-top: 3"><td colspan="3" style="text-align:center"><input type="submit" value="Engage"
+   name="Engage" onClick="xmlhttpPost('list.htm', 'Richiestadati', 'Recover', ''); return true;"> <input type="reset" value="Reset" name="Reset" onclick="xmlhttpPost('list.htm', 'Richiestadati', 'Recover', ''); xmlhttpPost('list.htm', 'Richiestadati', 'Risultato', ''); return false;"></td></tr>
 </tbody></table></form>
 
 <div id="Risultato"></div>
