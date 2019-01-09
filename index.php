@@ -4,11 +4,12 @@
 <meta http-equiv="Content-Type" content="text/html; charset="UTF-8">
 <link rel="stylesheet" type="text/css" href="/include/style.css">
 <link rel="SHORTCUT ICON" href="favicon.ico"> 
-<script  src="/include/ajaxsbmt.js" type="text/javascript"></script>
+<script src="/include/ajaxsbmt.js" type="text/javascript"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="/include/checkAll.js" type="text/javascript"></script>
 </head>
 <body>
+<script src="/include/keymail.js" type="text/javascript"></script>
 <h1 style="margin:2">Cyrus Restore</h1>
 <p style="text-align: right; margin:0">Logged in as <b><?php echo $_SERVER["REMOTE_USER"];?></b></p>
 
