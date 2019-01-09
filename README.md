@@ -33,7 +33,7 @@ The attribute `o` is not mandatory. It is defined in the `$attr_ldap_localdom` c
 
 ## Install
 Clone the repository in a web server.
-Clone the *falon-common* repository in your Document Root. This must be install the `include` folder under the Document Root.
+Clone the *falon-common* repository in your Document Root. This must install the `include` folder under the Document Root.
 
 Rename config.php_default in config.php and change it at your own.
 
