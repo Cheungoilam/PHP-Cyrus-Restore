@@ -3,7 +3,7 @@
 
 Summary: A management tool for delayed deleted folders and delayed expunged mails.
 Name: CyrusRestore
-Version: 0.1.0
+Version: 0.1.1
 Release: 1%{?dist}
 Group: Applications/Communications
 License: Apache-2.0
@@ -17,7 +17,7 @@ Requires: mod_ssl >= 2.4.6
 Requires: php >= 7.1
 Requires: php-imap >= 7.1
 Requires: php-ldap >= 7.1
-Requires: FalonCommon >= 0.1.0
+Requires: FalonCommon >= 0.1.2
 
 %description
 %{bigname}
@@ -67,5 +67,8 @@ esac
 %config(noreplace) %{_sysconfdir}/httpd/conf.d/%{bigname}.conf
 
 %changelog
+* Wed Jan 09 2019 Marco Favero <marco.favero@csi.it> 0.1.1-1
+- Added facility to map the [@] key in [Tab] key in form navigation
+
 * Thu Jan 03 2019 Marco Favero <marco.favero@csi.it> 0.1.0-1
 - Initial build version

@@ -32,8 +32,12 @@ You can have many virtual domains. Each domain have a tree with
 The attribute `o` is not mandatory. It is defined in the `$attr_ldap_localdom` configuration parameter.
 
 ## Install
-Clone the repository in a web server. Move the `include` folder under the Document Root.
+Clone the repository in a web server.
+Clone the *falon-common* repository in your Document Root. This must be install the `include` folder under the Document Root.
+
 Rename config.php_default in config.php and change it at your own.
+
+Otherwise, if you have a RH EL7 like system, install through RPM file. Then configure LDAP and IMAP in config.php.
 
 ## How it works
 Delayed deleted folders are recovered to their initial path. The `$trashFolder` is omitted from the recovered path. This is useful if the MUA moves the folder to the Trash or similar folder before to delete it. If many folders with the same name are delayed deleted, then the delete date is suffixed to the folder recovered name.
