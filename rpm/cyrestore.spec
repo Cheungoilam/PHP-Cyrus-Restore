@@ -33,7 +33,7 @@ rm -rf %{buildroot}/
 
 %install
 
-rm -rf rpm/* include
+rm -rf rpm
 
 # Web HTTPD conf
 
