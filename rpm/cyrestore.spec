@@ -3,7 +3,7 @@
 
 Summary: A management tool for delayed deleted folders and delayed expunged mails.
 Name: CyrusRestore
-Version: 0.1.1
+Version: 0.1.2
 Release: 1%{?dist}
 Group: Applications/Communications
 License: Apache-2.0
@@ -17,7 +17,7 @@ Requires: mod_ssl >= 2.4.6
 Requires: php >= 7.1
 Requires: php-imap >= 7.1
 Requires: php-ldap >= 7.1
-Requires: FalonCommon >= 0.1.2
+Requires: FalonCommon >= 0.1.3
 
 %description
 %{bigname}
@@ -44,13 +44,16 @@ rm %{bigname}.conf-default
 
 # Cyrus Restore application files
 mkdir -p %{buildroot}%{_datadir}/%{bigname}
+mkdir -p %{buildroot}%{_docdir}/%{bigname}
 cp -a * %{buildroot}%{_datadir}/%{bigname}/
+mv %{buildroot}%{_datadir}/%{bigname}/LICENSE %{buildroot}%{_docdir}/%{bigname}/
+mv %{buildroot}%{_datadir}/%{bigname}/README.md %{buildroot}%{_docdir}/%{bigname}/
 mv %{buildroot}%{_datadir}/%{bigname}/config.php_default %{buildroot}%{_datadir}/%{bigname}/config.php
 ## Remove unnecessary files
 rm -rf %{buildroot}%{_datadir}/%{bigname}/_config.yml %{buildroot}%{_datadir}/.gitignore %{buildroot}%{_datadir}/rpm
 
 ##File list
-find %{buildroot}%{_datadir}/%{bigname} -mindepth 1 -type f | grep -v LICENSE$ | grep -v \.md$ | grep -v config\.php$ | grep -v \.git | grep -v '\_default$' | sed -e "s@$RPM_BUILD_ROOT@@" > FILELIST
+find %{buildroot}%{_datadir}/%{bigname} -mindepth 1 -type f | grep -v config\.php$ | grep -v \.git | grep -v '\_default$' | sed -e "s@$RPM_BUILD_ROOT@@" > FILELIST
 
 %post
 case "$1" in
@@ -61,12 +64,16 @@ esac
 
 
 %files -f FILELIST
-%license %{_datadir}/%{bigname}/LICENSE
-%doc %{_datadir}/%{bigname}/README.md
+%license %{_docdir}/%{bigname}/LICENSE
+%doc %{_docdir}/%{bigname}/README.md
 %config(noreplace) %{_datadir}/%{bigname}/config.php
 %config(noreplace) %{_sysconfdir}/httpd/conf.d/%{bigname}.conf
 
 %changelog
+* Thu Jan 24 2019 Marco Favero <marco.favero@csi.it> 0.1.2-1
+- Added facility to change all unexpunge time in batch mode.
+- Moved doc files in package doc dir.
+
 * Wed Jan 09 2019 Marco Favero <marco.favero@csi.it> 0.1.1-1
 - Added facility to map the [@] key in [Tab] key in form navigation
 
