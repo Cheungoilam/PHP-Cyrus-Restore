@@ -24,12 +24,16 @@ END;
 
 if (is_array($folders)) {
 	
-        foreach ( $folders as $key => $folder ) {
+	foreach ( $folders as $key => $folder ) {
+		$inboxClause = '';
 		# Construct the path for unexpunge command
-		if ($folder == 'INBOX')
+		if ($folder == 'INBOX') {
 			$path = "user/$mailbox";
-		else
+			$inboxClause = 'id="inbox"';
+		}
+		else {
 			$path = "user/$uid/$folder@$dom";
+		}
 		# Variables passed to unexpunge page
 	        $post = array(  'path' => $path,
                         'name' => $folder,
@@ -37,10 +41,11 @@ if (is_array($folders)) {
 			'key' => $key
                 );
 
-                printf('<tr><td><input type="checkbox" name="folder[]" value="%s" /><td><input type="number" disabled="disabled" value="%d" min="1" max="%d" name="range[]" /></td></td><td>%s</td></tr>',
+                printf('<tr><td><input type="checkbox" name="folder[]" value="%s" /><td><input type="number" disabled="disabled" value="%d" min="1" max="%d" %s name="range[]" /></td></td><td>%s</td></tr>',
                         base64_encode(serialize($post)),
 			$maxday,
 			$maxday,
+			$inboxClause,
                         htmlspecialchars(mb_convert_encoding($folder, "UTF-8", "UTF7-IMAP"))
 		);
 	}
